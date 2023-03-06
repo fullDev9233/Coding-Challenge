@@ -67,6 +67,21 @@ const theme = createTheme({
     caption: {
       fontSize: 10,
     },
+    responsiveH1: {
+      font: 'normal normal normal 22px/29px Roboto',
+    },
+    responsiveH2: {
+      font: 'normal normal normal 18px/24px Roboto',
+    },
+    responsiveH3: {
+      font: 'normal normal normal 14px/19px Roboto',
+    },
+    responsiveH4: {
+      font: 'normal normal normal 13px/13px Roboto',
+    },
+    responsiveH5: {
+      font: 'normal normal normal 11px/13px Roboto',
+    },
   },
   palette: {
     primary: { main: '#074682', dark: '#074682', contrastText: '#0e68b0' },
@@ -153,6 +168,31 @@ declare module '@mui/material/styles' {
     orange?: PaletteOptions['primary']
     mixed?: PaletteOptions['primary']
     other?: PaletteOptions['primary']
+  }
+
+  interface TypographyVariants {
+    responsiveH1: React.CSSProperties
+    responsiveH2: React.CSSProperties
+    responsiveH3: React.CSSProperties
+    responsiveH4: React.CSSProperties
+    responsiveH5: React.CSSProperties
+  }
+  interface TypographyVariantsOptions {
+    responsiveH1?: React.CSSProperties
+    responsiveH2?: React.CSSProperties
+    responsiveH3?: React.CSSProperties
+    responsiveH4?: React.CSSProperties
+    responsiveH5?: React.CSSProperties
+  }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    responsiveH1: true
+    responsiveH2: true
+    responsiveH3: true
+    responsiveH4: true
+    responsiveH5: true
   }
 }
 
