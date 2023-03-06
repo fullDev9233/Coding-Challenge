@@ -7,11 +7,11 @@
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  // const [text, setText] = useState('')
+    // const [text, setText] = useState('')
 
-  // useEffect(() => {
-  //   console.log(text)
-  // }, [])
+    // useEffect(() => {
+    //   console.log(text)
+    // }, [])
 
-  return <main>Hello World</main>
+    return <main>Hello World</main>
 }
