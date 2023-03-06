@@ -1,17 +1,29 @@
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import { Inter } from '@next/font/google'
-// import { useState, useEffect } from 'react'
-// import styles from '@/styles/Home.module.css'
+import { useCallback, useState } from 'react'
+import Card from '@/components/Card'
+import NFTModal from '@/components/NFTModal'
+import { Container } from '@/styles/home'
 
-// const inter = Inter({ subsets: ['latin'] })
+const Home = () => {
+    const [isOpen, setIsOpen] = useState(false)
 
-export default function Home() {
-    // const [text, setText] = useState('')
+    const handleClickOpen = useCallback(() => {
+        setIsOpen(true)
+    }, [])
 
-    // useEffect(() => {
-    //   console.log(text)
-    // }, [])
+    const handleClose = () => {
+        setIsOpen(false)
+    }
 
-    return <main>Hello World</main>
+    return (
+        <main>
+            <Container>
+                {[0, 1, 2, 3, 4].map((id) => (
+                    <Card key={`nft-${id}`} handleClickOpen={handleClickOpen} />
+                ))}
+            </Container>
+            <NFTModal isOpen={isOpen} handleClose={handleClose} />
+        </main>
+    )
 }
+
+export default Home
