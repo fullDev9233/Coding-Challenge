@@ -6,7 +6,6 @@ import { Container } from '@/styles/home'
 const openseaApiUrl = process.env.NEXT_PUBLIC_OPENSEA_API as string
 
 const Home = ({ nfts }: any) => {
-    console.log(nfts)
     const [isOpen, setIsOpen] = useState(false)
     const [selectedNFT, setSelectedNFT] = useState<any>(null)
 
