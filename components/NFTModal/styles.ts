@@ -11,6 +11,12 @@ export const StyledDialog = styled(Dialog)(({ theme }) => ({
                 textDecoration: 'none',
                 color: theme.palette.yellow.dark,
             },
+            '& h1, h4': {
+                whiteSpace: 'nowrap',
+                width: 280,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+            },
         },
     },
 }))
