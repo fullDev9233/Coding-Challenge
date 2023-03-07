@@ -10,7 +10,7 @@ export const CardContainer = styled('div')(({ theme }) => ({
         padding: 20,
         '& h1, h4': {
             whiteSpace: 'nowrap',
-            width: 280,
+            width: 260,
             overflow: 'hidden',
             textOverflow: 'ellipsis',
         },

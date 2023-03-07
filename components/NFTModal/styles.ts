@@ -3,8 +3,10 @@ import { Button, Dialog, styled } from '@mui/material'
 
 export const StyledDialog = styled(Dialog)(({ theme }) => ({
     '.MuiPaper-root': {
-        width: 400,
+        width: 322,
         borderRadius: 8,
+        border: `1px solid ${theme.palette.green.dark}`,
+        background: theme.palette.gray.light,
         section: {
             padding: 20,
             a: {
@@ -13,7 +15,7 @@ export const StyledDialog = styled(Dialog)(({ theme }) => ({
             },
             '& h1, h4': {
                 whiteSpace: 'nowrap',
-                width: 280,
+                width: 260,
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
             },
@@ -21,11 +23,10 @@ export const StyledDialog = styled(Dialog)(({ theme }) => ({
     },
 }))
 
-export const NFTAsset = styled(Image)(() => ({
-    width: '100%',
-    height: 'auto',
+export const NFTAsset = styled(Image)(({ theme }) => ({
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
+    borderBottom: `1px solid ${theme.palette.green.dark}`,
 }))
 
 export const BuyButton = styled(Button)(({ theme }) => ({

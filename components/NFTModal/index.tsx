@@ -46,7 +46,7 @@ const NFTModal = ({ isOpen, nft, handleClose }: NFTModalProps) => {
                         {formatAddress(nft?.maker?.address)}
                     </a>
                 </Typography>
-                <Typography variant='h4'>
+                <Typography variant='h4' mb={1.5}>
                     Price: {nft?.current_price ? formatNumbers(web3.utils.fromWei(nft.current_price)) : '0'} ETH
                 </Typography>
                 <FlexBox sx={{ justifyContent: 'flex-end' }}>
