@@ -1,12 +1,16 @@
 import Image from 'next/image'
 import { Button, Dialog, styled } from '@mui/material'
 
-export const StyledDialog = styled(Dialog)(() => ({
+export const StyledDialog = styled(Dialog)(({ theme }) => ({
     '.MuiPaper-root': {
         width: 400,
         borderRadius: 8,
         section: {
             padding: 20,
+            a: {
+                textDecoration: 'none',
+                color: theme.palette.yellow.dark,
+            },
         },
     },
 }))

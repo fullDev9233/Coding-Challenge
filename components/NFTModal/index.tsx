@@ -1,15 +1,23 @@
 import { Typography } from '@mui/material'
+import useWeb3 from '@/hooks/useWeb3'
+import formatNumbers from '@/utils/formatNumbers'
+import formatAddress from '@/utils/formatAddress'
 import FlexBox from '../FlexBox'
 import { StyledDialog, NFTAsset, BuyButton } from './styles'
 
 interface NFTModalProps {
     isOpen: boolean
+    nft: any
     handleClose: () => void
 }
 
-const NFTModal = ({ isOpen, handleClose }: NFTModalProps) => {
+const NFTModal = ({ isOpen, nft, handleClose }: NFTModalProps) => {
+    const { web3 } = useWeb3()
+
+    const nftInfo = nft?.maker_asset_bundle.assets[0]
+
     const handleBuyNFT = () => {
-        window.open('https://opensea.io/assets/ethereum/0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b/7826', '_blank')
+        window.open(nftInfo?.permalink, '_blank')
     }
 
     return (
@@ -20,17 +28,26 @@ const NFTModal = ({ isOpen, handleClose }: NFTModalProps) => {
             aria-describedby='nft-modal-description'
         >
             <NFTAsset
-                src='https://gateway.pinata.cloud/ipfs/Qme6rBzYrvv2rnXBbv1dbjCvjEs3Mu4PgafMs6eyCkaxw4'
+                src={nftInfo?.image_url ? nftInfo.image_url : '/assets/imgs/no_img.jpeg'}
                 width={320}
                 height={320}
                 alt='NFT'
             />
             <section>
-                <Typography variant='h1' mb={1.5}>
-                    NFT Name
+                <Typography variant='h1' mb={1.5} className='nft-name'>
+                    {nftInfo?.name || 'Unknown'}
                 </Typography>
-                <Typography variant='h4' mb={1.5}>
-                    Owner Address
+                <Typography variant='h4' mb={1.5} className='nft-id'>
+                    ID: {nftInfo?.token_id}
+                </Typography>
+                <Typography variant='h4' mb={1.5} className='nft-id'>
+                    Owned by{' '}
+                    <a href={`https://testnets.opensea.io/${nft?.maker?.address}`} target='_blank' rel='noreferrer'>
+                        {formatAddress(nft?.maker?.address)}
+                    </a>
+                </Typography>
+                <Typography variant='h4'>
+                    Price: {nft?.current_price ? formatNumbers(web3.utils.fromWei(nft.current_price)) : '0'} ETH
                 </Typography>
                 <FlexBox sx={{ justifyContent: 'flex-end' }}>
                     <BuyButton variant='contained' onClick={handleBuyNFT}>
